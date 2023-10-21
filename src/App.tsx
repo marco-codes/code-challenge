@@ -32,7 +32,7 @@ function App() {
       setBoardState(newBoardState);
     }
     setCurrentGuessAttempt(undefined);
-  }, [currentGuessAttempt]);
+  }, [currentGuessAttempt, boardState]);
 
   return (
     <div className="mx-auto max-w-xl h-screen px-6 py-8 flex flex-col items-center">

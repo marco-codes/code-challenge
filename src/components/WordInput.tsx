@@ -3,7 +3,7 @@ import {
   type KeyboardEvent,
   useRef,
   useState,
-  useEffect,
+  useCallback,
 } from "react";
 import { LetterInput } from "./LetterInput";
 import { WordGuessAttempt } from "../types/wordle/wordGuessAttempt";
@@ -56,29 +56,32 @@ export const WordInput = ({
     letterPosition,
   }));
 
-  const onLetterChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const letterValue = target.value;
-    const tabIndex = target.tabIndex;
+  const onLetterChange = useCallback(
+    ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const newLetter = target.value;
+      const tabIndex = target.tabIndex;
 
-    if (tabIndex === undefined || letterValue === " ") {
-      return;
-    }
-
-    if (letterValue && tabIndex !== letters.length - 1) {
-      const nextInput = letters[tabIndex + 1].current;
-      if (!nextInput?.value) {
-        // Only focus next input if its value is falsy
-        letters[tabIndex + 1].current?.focus();
+      if (tabIndex === undefined || newLetter === " ") {
+        return;
       }
-    }
 
-    setGuessAttempt(
-      (prevState) =>
-        prevState.map((existingLetter, index) =>
-          index === tabIndex ? letterValue : existingLetter
-        ) as WordGuessAttempt
-    );
-  };
+      if (newLetter && tabIndex !== letters.length - 1) {
+        const nextInput = letters[tabIndex + 1].current;
+        if (!nextInput?.value) {
+          // Only focus next input if its value is falsy
+          letters[tabIndex + 1].current?.focus();
+        }
+      }
+
+      const newGuessAttempt = guessAttempt.map((existingLetter, index) =>
+        index === tabIndex ? newLetter : existingLetter
+      ) as WordGuessAttempt;
+
+      setGuessAttempt(newGuessAttempt);
+      onChange?.(newGuessAttempt);
+    },
+    [guessAttempt, onChange, letters]
+  );
 
   const onKeyDown = (
     { code }: KeyboardEvent<HTMLInputElement>,
@@ -92,10 +95,6 @@ export const WordInput = ({
       letters[letterPosition - 1].current?.focus();
     }
   };
-
-  useEffect(() => {
-    onChange?.(guessAttempt);
-  }, [guessAttempt]);
 
   return (
     <ul className="flex flex-row gap-4">
