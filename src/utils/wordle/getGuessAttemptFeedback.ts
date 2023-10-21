@@ -24,12 +24,13 @@ export function getGuessAttemptFeedback(
 
   // Status array
   return guessAttempt.map((letter, index) => {
+    const formattedLetter = letter.toLocaleLowerCase();
     // Default to "not in word"
     let status = LetterStatus.NotInWord;
 
-    if (formattedCorrectWord[index] === letter) {
+    if (formattedCorrectWord[index] === formattedLetter) {
       status = LetterStatus.Correct;
-    } else if (formattedCorrectWord.includes(letter)) {
+    } else if (formattedCorrectWord.includes(formattedLetter)) {
       status = LetterStatus.WrongSpot;
     }
 
