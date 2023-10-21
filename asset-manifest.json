@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/code-challenge/static/css/main.5ebb129e.css",
+    "main.js": "/code-challenge/static/js/main.7d9ad5a2.js",
+    "index.html": "/code-challenge/index.html",
+    "main.5ebb129e.css.map": "/code-challenge/static/css/main.5ebb129e.css.map",
+    "main.7d9ad5a2.js.map": "/code-challenge/static/js/main.7d9ad5a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ebb129e.css",
+    "static/js/main.7d9ad5a2.js"
+  ]
+}
