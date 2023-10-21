@@ -4,6 +4,7 @@ import {
   useRef,
   useState,
   useCallback,
+  useMemo,
 } from "react";
 import { LetterInput } from "./LetterInput";
 import { WordGuessAttempt } from "../types/wordle/wordGuessAttempt";
@@ -42,13 +43,16 @@ export const WordInput = ({
   const letterFourRef = useRef<HTMLInputElement | null>(null);
   const letterFiveRef = useRef<HTMLInputElement | null>(null);
 
-  const letters = [
-    letterOneRef,
-    letterTwoRef,
-    letterThreeRef,
-    letterFourRef,
-    letterFiveRef,
-  ];
+  const letters = useMemo(
+    () => [
+      letterOneRef,
+      letterTwoRef,
+      letterThreeRef,
+      letterFourRef,
+      letterFiveRef,
+    ],
+    []
+  );
 
   const letterDetails = letters.map((ref, letterPosition) => ({
     id: `${id}-${letterPosition}`,
