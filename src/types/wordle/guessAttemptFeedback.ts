@@ -1,4 +1,4 @@
-import { LetterStatus } from "../../constants/lettetStatus";
+import { LetterStatus } from "../../constants/letterStatus";
 /**
  * Represents all 6 guess attempts with feedback
  */

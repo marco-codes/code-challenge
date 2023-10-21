@@ -1,4 +1,4 @@
-import { LetterStatus } from "../../constants/lettetStatus";
+import { LetterStatus } from "../../constants/letterStatus";
 import type { GuessAttemptWithFeedback } from "../../types/wordle/guessAttemptFeedback";
 
 /**

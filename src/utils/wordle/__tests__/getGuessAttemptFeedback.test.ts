@@ -1,4 +1,4 @@
-import { LetterStatus } from "../../../constants/lettetStatus";
+import { LetterStatus } from "../../../constants/letterStatus";
 import { getGuessAttemptFeedback } from "../getGuessAttemptFeedback";
 
 describe("getGuessAttemptFeedback tests", () => {
