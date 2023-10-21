@@ -1,5 +1,5 @@
 /**
- * Throw an error with an optional http status code.
+ * Throw an error with a specified error message
  *
  * @param message - The error message.
  */
